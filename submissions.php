@@ -5,7 +5,7 @@ $pagenum = filter_input(INPUT_GET, 'pagenum');
 $pagenum = isset($pagenum) ? absint($pagenum) : 1;
 $limit = 10; // number of rows in page
 $offset = ( $pagenum - 1 ) * $limit;
-$i = 1 + $offset;
+$j = 1 + $offset;
 $year = filter_input(INPUT_GET,'year');
 $month = filter_input(INPUT_GET,'month');
 // ... set up your argument array for WP_Query:
@@ -40,9 +40,9 @@ $posts = get_posts( $args );
 $num_of_pages = ceil( $total_posts/$limit);
 $pagination = pm_get_pagination($num_of_pages,$pagenum);
 
-if(isset($_GET['export']))
+if(isset($_GET['metaguss_export']))
 {
-    include 'export.php';
+    include 'metagauss-export.php';
 }
 ?>
 <div class="pmagic"> 
@@ -75,7 +75,7 @@ if(isset($_GET['export']))
             </select>
             </li> 
             <li><input type="submit" value="Filter" /></li>  
-            <li><input type="submit" value="export" name="export" id="export"/></li>
+            <li><input type="submit" value="export" name="metaguss_export" id="metaguss_export"/></li>
             <?php 
             if(isset($_GET['export']) && isset($filename))
             {
@@ -109,7 +109,7 @@ if(isset($_GET['export']))
           <th><?php _e('KeyWord','profilegrid-user-profiles-groups-and-communities');?></th>
         </tr>
         <?php
-                    $j=1;
+                    
 			foreach($posts as $post)
 			{
                             $keyword = get_post_meta($post->ID,'_yoast_wpseo_focuskw',true);
