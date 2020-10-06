@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 $path =  plugin_dir_url(__FILE__); 
 $identifier = 'EMAIL_TMPL';
 $pagenum = filter_input(INPUT_GET, 'pagenum');
@@ -82,7 +81,6 @@ $k++;
     
 $table .='  </tbody>
 </table>';
-
 file_put_contents($filename,$table);
 wp_redirect($filename);
 ?>

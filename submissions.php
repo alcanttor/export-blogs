@@ -45,7 +45,6 @@ if(isset($_GET['export']))
     include 'export.php';
 }
 ?>
-
 <div class="pmagic"> 
   
   <!-----Operationsbar Starts----->
@@ -76,7 +75,13 @@ if(isset($_GET['export']))
             </select>
             </li> 
             <li><input type="submit" value="Filter" /></li>  
-            <li><input type="submit" value="export" name="export" id="export"/></li>  
+            <li><input type="submit" value="export" name="export" id="export"/></li>
+            <?php 
+            if(isset($_GET['export']) && isset($filename))
+            {
+                echo '<a href="'.$filename.'">Downlad blogs</a>';
+            }
+            ?>
         </ul>
       </div>
     </div>
@@ -104,7 +109,7 @@ if(isset($_GET['export']))
           <th><?php _e('KeyWord','profilegrid-user-profiles-groups-and-communities');?></th>
         </tr>
         <?php
-	 	$j =1;
+                    $j=1;
 			foreach($posts as $post)
 			{
                             $keyword = get_post_meta($post->ID,'_yoast_wpseo_focuskw',true);

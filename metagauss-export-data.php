@@ -33,7 +33,8 @@ function metagauss_export_admin_menu()
 
 function metagauss_dashboard()
 {
-    wp_enqueue_style('metagauss-admin',plugin_dir_url( __FILE__ ) . 'metagauss-admin.css', array(),'1.0','all'); 
+    
+    wp_enqueue_style('metagauss-admin',plugin_dir_url( __FILE__ ) . 'metagauss-admin.css', array(),1.0, 'all'); 
     include 'submissions.php';
 }
 
@@ -61,3 +62,8 @@ function metagauss_dashboard()
 		$page_links = paginate_links( $args );
 		return $page_links;
 	}
+        
+        function app_output_buffer() {
+                ob_start();
+        } // soi_output_buffer
+        add_action('init', 'app_output_buffer');
