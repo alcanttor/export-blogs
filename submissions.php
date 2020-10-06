@@ -104,7 +104,7 @@ if(isset($_GET['export']))
           <th><?php _e('KeyWord','profilegrid-user-profiles-groups-and-communities');?></th>
         </tr>
         <?php
-	 	
+	 	$j =1;
 			foreach($posts as $post)
 			{
                             $keyword = get_post_meta($post->ID,'_yoast_wpseo_focuskw',true);
@@ -112,13 +112,13 @@ if(isset($_GET['export']))
 				?>
         <tr>
          
-          <td><?php echo $i;?></td>
+          <td><?php echo $j;?></td>
           <td><?php echo $post->post_title;?></td>
           <td><?php echo get_permalink($post->ID);?></td>
          <td><?php echo $post->post_date;?></td>
           <td><?php echo $keyword;?></td>
         </tr>
-        <?php $i++; }?>
+        <?php $j++; }?>
       </table>
     </div>
     

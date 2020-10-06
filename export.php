@@ -57,10 +57,10 @@ $table = '<table class="wp-list-table widefat fixed" cellspacing="0">
   </tfoot>
   <tbody id="the-list">';
  
-  $i=1;
+  $k=1;
   foreach($posts as $post)
   {
-	if($i%2==0)
+	if($k%2==0)
 	{
 		$class="";
 	}
@@ -77,7 +77,7 @@ $table = '<table class="wp-list-table widefat fixed" cellspacing="0">
         $table .='<th scope="row" style="">'.$keyword.'</th>';
 	
 	$table .='</tr>';
-$i++;
+$k++;
 } 
     
 $table .='  </tbody>
