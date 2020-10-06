@@ -33,7 +33,7 @@ function metagauss_export_admin_menu()
 
 function metagauss_dashboard()
 {
-    wp_enqueue_script('metagauss-admin',plugin_dir_url( __FILE__ ) . 'css/metagauss-admin.css', array(),1.0, 'all'); 
+    wp_enqueue_script('metagauss-admin',plugin_dir_url( __FILE__ ) . 'metagauss-admin.css', array(),1.0, 'all'); 
     include 'submissions.php';
 }
 
