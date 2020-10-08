@@ -44,6 +44,15 @@ if(isset($_GET['metaguss_export']))
 {
     include 'metagauss-export.php';
 }
+
+function get_analytics_data_new($postid)
+{
+    include_once ( GADWP_DIR . 'admin/ajax-actions.php' );
+    $backend = new GADWP_Backend_Ajax();
+   $data = $backend->custom_item_reports($postid);
+   return $data;
+   return $postid;
+}
 ?>
 <div class="pmagic"> 
   
@@ -107,13 +116,18 @@ if(isset($_GET['metaguss_export']))
           <th><?php _e('URL','profilegrid-user-profiles-groups-and-communities');?></th>
           <th><?php _e('Publish Date','profilegrid-user-profiles-groups-and-communities');?></th>
           <th><?php _e('KeyWord','profilegrid-user-profiles-groups-and-communities');?></th>
+          <th><?php _e('Organic Search','profilegrid-user-profiles-groups-and-communities');?></th>
+          <th><?php _e('Users','profilegrid-user-profiles-groups-and-communities');?></th>
+          <th><?php _e('Page Views','profilegrid-user-profiles-groups-and-communities');?></th>
+          <th><?php _e('Bounce Rate','profilegrid-user-profiles-groups-and-communities');?></th>
+          
         </tr>
         <?php
                     
 			foreach($posts as $post)
 			{
                             $keyword = get_post_meta($post->ID,'_yoast_wpseo_focuskw',true);
-                                    
+                            $analytics = get_analytics_data_new($post->ID);        
 				?>
         <tr>
          
@@ -122,6 +136,11 @@ if(isset($_GET['metaguss_export']))
           <td><?php echo get_permalink($post->ID);?></td>
          <td><?php echo $post->post_date;?></td>
           <td><?php echo $keyword;?></td>
+          <td><?php echo $analytics[0][4];?></td>
+           <td><?php echo $analytics[0][1];?></td>
+            <td><?php echo $analytics[0][2];?></td>
+             <td><?php echo $analytics[0][3];?></td>
+             
         </tr>
         <?php $j++; }?>
       </table>

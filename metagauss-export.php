@@ -48,6 +48,10 @@ $table = '<table class="wp-list-table widefat fixed" cellspacing="0">
     $table .='<th scope="col" style="">URL</th>';
     $table .='<th scope="col" style="">Publish Date</th>';
     $table .='<th scope="col" style="">Keyword</th>';
+    $table .='<th scope="col" style="">Organic Search</th>';
+    $table .='<th scope="col" style="">Users</th>';
+    $table .='<th scope="col" style="">Page Views</th>';
+    $table .='<th scope="col" style="">Bounce Rate</th>';
    
    $table .=' </tr>
   </thead>
@@ -69,11 +73,15 @@ $table = '<table class="wp-list-table widefat fixed" cellspacing="0">
 	}
 	 $table .= '<tr class="'.$class.'">';
 	$keyword = get_post_meta($post->ID,'_yoast_wpseo_focuskw',true);
-                             
+        $analytics = get_analytics_data_new($post->ID);  
         $table .='<th scope="row" style="">'.$post->post_title.'</th>';
         $table .='<th scope="row" style="">'.get_permalink($post->ID).'</th>';
 	$table .='<th scope="row" style="">'.$post->post_date.'</th>';
         $table .='<th scope="row" style="">'.$keyword.'</th>';
+        $table .='<th scope="row" style="">'.$analytics[0][4].'</th>';
+        $table .='<th scope="row" style="">'.$analytics[0][1].'</th>';
+        $table .='<th scope="row" style="">'.$analytics[0][2].'</th>';
+        $table .='<th scope="row" style="">'.$analytics[0][3].'</th>';
 	
 	$table .='</tr>';
 $k++;
